@@ -28,18 +28,31 @@ header h1 {
   margin-bottom: 10px;
 }
 
+
 main {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 30px;
-  justify-content: center;
+  align-items: center;
 }
 
 @media (min-width: 768px) {
-  main {
-    grid-template-columns: 2fr 1fr;
+  #activities-list.horizontal-scroll {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    overflow-x: auto;
   }
 }
+
+#activities-list.horizontal-scroll {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
 
 section {
   background-color: white;
@@ -47,7 +60,8 @@ section {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 500px;
+  max-width: 700px;
+  margin-bottom: 10px;
 }
 
 section h3 {
@@ -57,12 +71,18 @@ section h3 {
   color: #1a237e;
 }
 
+/* Activity card styles for horizontal layout */
 .activity-card {
-  margin-bottom: 15px;
+  min-width: 280px;
+  max-width: 320px;
+  margin-bottom: 0;
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .activity-card h4 {
@@ -130,24 +150,10 @@ section h3 {
   font-style: italic;
 }
 
-.form-group {
-  margin-bottom: 15px;
-}
 
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
 
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-}
+/* Hide the old form styles since the form is removed */
+.form-group { display: none; }
 
 button {
   background-color: #1a237e;
@@ -158,6 +164,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s;
+  margin-top: 10px;
 }
 
 button:hover {
